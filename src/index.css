@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 5%;
+    --foreground: 210 20% 90%;
+    --card: 0 0% 5%;
+    --card-foreground: 210 20% 90%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 210 20% 90%;
+    --primary: 210 20% 90%;
+    --primary-foreground: 0 0% 5%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 210 20% 90%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 210 10% 60%;
+    --accent: 0 0% 12%;
+    --accent-foreground: 210 20% 90%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 210 20% 90%;
+    --radius: 0.625rem;
+  }
+
+html, body, #root {
+    background-color: #0b0f0d;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Kanit', sans-serif;
+    color: #ffffff;
+    overflow-x: hidden;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  :root {
+    --premium-bg: #050505;
+    --premium-text: #ffffff;
+    --premium-muted: rgba(255, 255, 255, 0.75);
+
+    /* Retro red palette */
+    --premium-red-1: #ff2d55;
+    --premium-red-2: #ff4d00;
+    --premium-red-3: #ff1744;
+    --premium-glow: rgba(255, 45, 85, 0.45);
+  }
+
+  .hero-heading {
+    background: linear-gradient(90deg, var(--premium-red-3) 0%, #ff4d00 38%, #ff2d55 72%, var(--premium-red-2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 18px var(--premium-glow));
+  }
+
+  .premium-glow {
+    box-shadow:
+      0 0 0 1px rgba(255, 45, 85, 0.25),
+      0 10px 40px rgba(255, 45, 85, 0.10),
+      0 0 60px rgba(255, 45, 85, 0.10);
+  }
+}
+
