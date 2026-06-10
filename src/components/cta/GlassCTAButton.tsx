@@ -1,10 +1,12 @@
 
 
+import RESUME_PDF from "../../SanthoshKumar Resume FrontEnd Developer-1.pdf.pdf";
+
 interface GlassCTAButtonProps {
   className?: string;
   children: React.ReactNode;
   href?: string;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "download";
 }
 
 
@@ -20,7 +22,18 @@ export default function GlassCTAButton({
   const variantStyles =
     variant === "primary"
       ? "text-[#EAF1FF] bg-white/5 border border-white/10 hover:bg-white/10 shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_18px_50px_rgba(0,0,0,0.55)] backdrop-blur-md"
+      : variant === "download"
+      ? "text-[#EAF1FF] bg-white/5 border border-white/10 hover:bg-white/10 shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_18px_50px_rgba(0,0,0,0.55)] backdrop-blur-md"
       : "text-white bg-black/20 border border-white/15 hover:bg-white/5 shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_18px_50px_rgba(0,0,0,0.55)] backdrop-blur-md";
+
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = RESUME_PDF;
+    link.download = "SanthoshKumar-Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   const sheenLayer =
     "absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.18)_40%,rgba(255,255,255,0)_70%)] translate-x-[-60%] group-hover:translate-x-[60%] transition-transform duration-700";
@@ -35,6 +48,7 @@ export default function GlassCTAButton({
     <button
       type="button"
       className={`${base} ${variantStyles} relative overflow-hidden ${glow} ${className}`}
+      onClick={variant === "download" ? handleDownload : undefined}
     >
       <span className={sheenLayer} aria-hidden="true" />
       <span className={contentPadding}>{children}</span>

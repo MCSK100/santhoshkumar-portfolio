@@ -3,6 +3,7 @@ import FadeIn from "../components/FadeIn";
 import Magnet from "../components/Magnet";
 import ContactButton from "../components/ContactButton";
 import AnimatedJobTitles from "../components/AnimatedJobTitles";
+import GlassCTAButton from "../components/cta/GlassCTAButton";
 
 
 
@@ -105,7 +106,12 @@ export default function HeroSection() {
 
 
         <FadeIn delay={0.5} y={20}>
-          <ContactButton />
+          <div className="flex gap-4">
+            <ContactButton />
+            <GlassCTAButton variant="download">
+              Download Resume
+            </GlassCTAButton>
+          </div>
         </FadeIn>
       </div>
     </section>
