@@ -99,7 +99,7 @@ export default function HeroSection() {
             className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug max-w-[420px] sm:max-w-[520px] md:max-w-[620px]"
             style={{ fontSize: "clamp(0.75rem, 1.4vw, 1.05rem)" }}
           >
-            Results-driven Frontend Developer with 4+ years of experience building scalable, high-performance web applications and learning platforms. Specialized in React.js, JavaScript, HTML, CSS, PHP integration, and modern user experiences.
+            Results-driven Frontend Developer with 4+ years of experience building scalable, high-performance web applications and learning platforms. Specialized in React.js, JavaScript, HTML, CSS, and modern user experiences.
           </p>
         </FadeIn>
 

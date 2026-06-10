@@ -7,6 +7,7 @@ import ExperienceTimelineSection from "./sections/ExperienceTimelineSection";
 import TechStackSection from "./sections/TechStackSection";
 import SkillsSection from "./sections/SkillsSection";
 import EducationSection from "./sections/EducationSection";
+
 import LanguagesSection from "./sections/LanguagesSection";
 import WhyHireMeSection from "./sections/WhyHireMeSection";
 import ContactSection from "./sections/ContactSection";

@@ -2,8 +2,11 @@ import { useCallback, useRef, useState } from "react";
 import FadeIn from "../components/FadeIn";
 
 export default function EducationSection() {
+  return null;
+
   const ref = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ rx: 0, ry: 0 });
+
 
   const handleMove = useCallback((e: React.PointerEvent) => {
     if (!ref.current) return;
