@@ -2,10 +2,11 @@ type ReactNode = unknown;
 
 interface GlassCTAButtonProps {
   className?: string;
-  children: ReactNode;
+  children: React.ReactNode;
   href?: string;
   variant?: "primary" | "secondary";
 }
+
 
 export default function GlassCTAButton({
   className = "",
@@ -33,7 +34,7 @@ export default function GlassCTAButton({
   const button = (
     <button
       type="button"
-      className={`${base} ${variantStyles} relative overflow-hidden ${glow}`}
+      className={`${base} ${variantStyles} relative overflow-hidden ${glow} ${className}`}
     >
       <span className={sheenLayer} aria-hidden="true" />
       <span className={contentPadding}>{children}</span>

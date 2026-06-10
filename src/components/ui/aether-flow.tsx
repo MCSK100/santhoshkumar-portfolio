@@ -20,12 +20,8 @@ const useShaderAnimation = (
   },
 ) => {
   // Use a ref to hold the Three.js objects to prevent re-creation on every render
-  const threeRef = useRef<{
-    renderer: THREE.WebGLRenderer;
-    scene: THREE.Scene;
-    camera: THREE.OrthographicCamera;
-    material: THREE.ShaderMaterial;
-  } | null>(null);
+  const threeRef = useRef<any>(null);
+
 
   useEffect(() => {
     // Ensure the mount point is available
@@ -41,18 +37,19 @@ const useShaderAnimation = (
     mount.appendChild(renderer.domElement);
 
     // --- Shader Material Setup ---
-    const uniforms: Record<string, { value: number | THREE.Vector2 }> = {
+    const uniforms: any = {
       u_time: { value: 0.0 },
       u_resolution: {
-        value: new THREE.Vector2(mount.clientWidth, mount.clientHeight),
+        value: new (THREE as any).Vector2(mount.clientWidth, mount.clientHeight),
       },
-      u_mouse: { value: new THREE.Vector2(0.5, 0.5) },
+      u_mouse: { value: new (THREE as any).Vector2(0.5, 0.5) },
       u_hue: { value: shaderProps.hue },
       u_speed: { value: shaderProps.speed },
       u_intensity: { value: shaderProps.intensity },
       u_complexity: { value: shaderProps.complexity },
       u_warp: { value: shaderProps.warp },
     };
+
 
     const vertexShader = `
       void main() {

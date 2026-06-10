@@ -1,9 +1,9 @@
 declare module 'three' {
-  // Minimal typing to satisfy strict TS during builds (runtime uses actual `three`).
-  export const __esModule: true;
+  // Use `any` for the whole module to avoid missing-member errors in strict TS setups.
+  // Runtime uses the real `three` package.
   const three: any;
-  export default three;
   export = three;
 }
+
 
 
