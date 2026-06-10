@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ControlSlider, ShaderCanvas } from '@/components/ui/aether-flow';
+
 
 export default function DemoOne() {
   const [hue, setHue] = useState(260);

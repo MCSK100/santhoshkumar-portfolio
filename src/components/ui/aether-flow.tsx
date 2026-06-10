@@ -1,5 +1,6 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import * as THREE from 'three';
+
 
 // --- Custom Hook for Shader Animation ---
 /**
@@ -210,7 +211,8 @@ export const ShaderCanvas = (props: {
   complexity: number;
   warp: number;
 }) => {
-  const mountRef = useRef<HTMLDivElement | null>(null);
+  const mountRef = useRef<HTMLDivElement>(null as unknown as HTMLDivElement);
+
   useShaderAnimation(mountRef, props);
   return <div ref={mountRef} className="absolute top-0 left-0 w-full h-full" />;
 };
