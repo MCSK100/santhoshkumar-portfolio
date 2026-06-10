@@ -37,7 +37,7 @@ const useShaderAnimation = (
     mount.appendChild(renderer.domElement);
 
     // --- Shader Material Setup ---
-    const uniforms: any = {
+const uniforms: any = {
       u_time: { value: 0.0 },
       u_resolution: {
         value: new (THREE as any).Vector2(mount.clientWidth, mount.clientHeight),
@@ -133,7 +133,8 @@ const useShaderAnimation = (
 
     const geometry = new THREE.PlaneGeometry(2, 2);
     const material = new THREE.ShaderMaterial({
-      uniforms: uniforms as unknown as THREE.ShaderMaterial['uniforms'],
+      uniforms,
+
       vertexShader,
       fragmentShader,
     });
@@ -164,7 +165,8 @@ const useShaderAnimation = (
 
     const handleMouseMove = (e: MouseEvent) => {
       // Keep original logic: store pixels in u_mouse and convert in shader.
-      const mouse = uniforms.u_mouse.value as THREE.Vector2;
+      const mouse = uniforms.u_mouse.value as any;
+
       mouse.x = e.clientX;
       mouse.y = window.innerHeight - e.clientY;
     };

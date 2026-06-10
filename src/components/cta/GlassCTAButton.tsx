@@ -1,4 +1,4 @@
-type ReactNode = unknown;
+
 
 interface GlassCTAButtonProps {
   className?: string;
