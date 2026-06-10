@@ -13,7 +13,7 @@ export default function AnimatedJobTitles() {
   const reducedMotion = useReducedMotion();
   const [index, setIndex] = useState(0);
 
-  const durationMs = 1400;
+  const durationMs = 2500;
 
   useEffect(() => {
     if (reducedMotion) return;
@@ -27,7 +27,7 @@ export default function AnimatedJobTitles() {
 
   if (reducedMotion) {
     return (
-      <div className="text-[#D7E2EA] uppercase tracking-widest font-medium text-[0.95rem] sm:text-[1.05rem] md:text-[1.2rem] opacity-80 text-center">
+      <div className="text-white/60 uppercase tracking-[0.3em] font-black text-[0.95rem] sm:text-[1.05rem] md:text-[1.2rem] text-center">
         Frontend Developer
       </div>
     );
@@ -37,16 +37,18 @@ export default function AnimatedJobTitles() {
     <div className="relative text-center">
       <motion.div
         key={current}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
-        className="text-[#D7E2EA] uppercase tracking-widest font-medium"
-        style={{ fontSize: "clamp(0.95rem, 1.8vw, 1.25rem)" }}
+        initial={{ opacity: 0, y: 15, filter: 'blur(10px)' }}
+        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        exit={{ opacity: 0, y: -15, filter: 'blur(10px)' }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="text-[#E31E24] uppercase tracking-[0.4em] font-black"
+        style={{ 
+          fontSize: "clamp(0.95rem, 2vw, 1.5rem)",
+          textShadow: "0 0 20px rgba(227,30,36,0.3)"
+        }}
       >
         {current}
       </motion.div>
     </div>
   );
 }
-

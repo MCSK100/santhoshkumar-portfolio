@@ -22,8 +22,6 @@ function scrollToId(id: string) {
 export default function ContactSection() {
   const [hasInteracted, setHasInteracted] = useState(false);
 
-  // Allow SEO bots + initial load without scrolling.
-  // When user clicks “Contact Me” button (or browser lands on #contact), scroll.
   useEffect(() => {
     const onHash = () => {
       if (window.location.hash === "#contact") scrollToId("contact");
@@ -41,20 +39,15 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative bg-[#0C0C0C] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 overflow-hidden"
+      className="relative bg-[#050505] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 overflow-hidden"
     >
-      {/* Decorative */}
-      <div
-        className="pointer-events-none absolute -top-60 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle at 20% 20%, rgba(182,0,168,0.20), transparent 55%), radial-gradient(circle at 80% 80%, rgba(0,190,255,0.12), transparent 55%)",
-          filter: "blur(22px)",
-          opacity: 0.85,
-        }}
-      />
+      {/* Dark Premium Background Accents */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-[#E31E24] rounded-full blur-[180px] opacity-[0.04] animate-pulse-red" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] bg-[#111111] rounded-full blur-[150px] opacity-20" />
+      </div>
 
-      <div className="relative">
+      <div className="relative z-10">
         <div className="text-center">
           <FadeIn delay={0} y={40}>
             <h2
@@ -70,47 +63,44 @@ export default function ContactSection() {
           <FadeIn delay={0.2} y={20}>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="lg:col-span-2">
-                <div className="rounded-[28px] border border-[#D7E2EA]/20 bg-white/5 backdrop-blur-md p-6 sm:p-8">
-                  <div className="text-[#D7E2EA] uppercase tracking-widest font-black" style={{ fontSize: "clamp(1.2rem, 2vw, 1.4rem)" }}>
-                    Let’s build something great
+                <div className="rounded-[32px] border border-white/5 bg-white/[0.02] backdrop-blur-xl p-6 sm:p-10">
+                  <div className="text-white uppercase tracking-[0.2em] font-black" style={{ fontSize: "clamp(1.2rem, 2vw, 1.4rem)" }}>
+                    Let’s build <span className="text-[#E31E24]">something great</span>
                   </div>
-                  <p className="mt-3 text-[#D7E2EA] opacity-80" style={{ fontSize: "clamp(0.95rem, 1.4vw, 1.05rem)" }}>
+                  <p className="mt-4 text-white/50" style={{ fontSize: "clamp(0.95rem, 1.4vw, 1.05rem)" }}>
                     Reach out using the links below. I respond quickly.
                   </p>
 
-                  <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <a
-href={buildMailto(CONTACT_EMAIL)}
-                      className="group rounded-[20px] border border-[#D7E2EA]/20 bg-black/20 hover:bg-white/5 transition-colors px-5 py-4"
+                      href={buildMailto(CONTACT_EMAIL)}
+                      className="group rounded-[24px] border border-white/5 bg-black/40 hover:border-[#E31E24]/30 transition-all duration-300 px-6 py-5"
                     >
-                      <div className="text-[#D7E2EA] font-black uppercase tracking-wider text-sm">Email</div>
-                      <div className="mt-2 text-white/90 font-medium">{CONTACT_EMAIL}</div>
-                      <div className="mt-2 text-[#D7E2EA] opacity-60 text-sm group-hover:opacity-80 transition-opacity">Send a message</div>
-
+                      <div className="text-white/40 font-black uppercase tracking-wider text-xs group-hover:text-[#E31E24] transition-colors">Email</div>
+                      <div className="mt-2 text-white font-medium break-all">{CONTACT_EMAIL}</div>
+                      <div className="mt-3 text-white/30 text-xs uppercase tracking-widest group-hover:text-white/60 transition-colors">Send a message</div>
                     </a>
 
                     <a
-href={`tel:+${CONTACT_PHONE}`}
-
-                      className="group rounded-[20px] border border-[#D7E2EA]/20 bg-black/20 hover:bg-white/5 transition-colors px-5 py-4"
+                      href={`tel:+${CONTACT_PHONE}`}
+                      className="group rounded-[24px] border border-white/5 bg-black/40 hover:border-[#E31E24]/30 transition-all duration-300 px-6 py-5"
                     >
-                      <div className="text-[#D7E2EA] font-black uppercase tracking-wider text-sm">Phone</div>
-{CONTACT_PHONE}
-                      <div className="mt-2 text-[#D7E2EA] opacity-60 text-sm group-hover:opacity-80 transition-opacity">Call / WhatsApp</div>
+                      <div className="text-white/40 font-black uppercase tracking-wider text-xs group-hover:text-[#E31E24] transition-colors">Phone</div>
+                      <div className="mt-2 text-white font-medium">{CONTACT_PHONE}</div>
+                      <div className="mt-3 text-white/30 text-xs uppercase tracking-widest group-hover:text-white/60 transition-colors">Call / WhatsApp</div>
                     </a>
 
                     <a
                       href={RESUME_PDF}
                       download="SanthoshKumar-Resume.pdf"
-                      className="group rounded-[20px] border border-[#D7E2EA]/20 bg-black/20 hover:bg-white/5 transition-colors px-5 py-4 sm:col-span-2 cursor-pointer"
+                      className="group rounded-[24px] border border-white/5 bg-black/40 hover:border-[#E31E24]/30 transition-all duration-300 px-6 py-5 sm:col-span-2 flex flex-col items-center text-center"
                     >
-                      <div className="text-[#D7E2EA] font-black uppercase tracking-wider text-sm">Resume</div>
-                      <div className="mt-2 text-white/90 font-medium">Download / View PDF</div>
-                      <div className="mt-2 text-[#D7E2EA] opacity-60 text-sm group-hover:opacity-80 transition-opacity">Open in new tab</div>
+                      <div className="text-white/40 font-black uppercase tracking-wider text-xs group-hover:text-[#E31E24] transition-colors">Resume</div>
+                      <div className="mt-2 text-white font-medium text-lg">Download / View PDF</div>
+                      <div className="mt-3 text-white/30 text-xs uppercase tracking-widest group-hover:text-white/60 transition-colors">Updated for 2024</div>
                     </a>
                   </div>
 
-                  {/* Hidden interaction for accessibility/testing */}
                   <button
                     type="button"
                     onClick={handleContactCTA}
@@ -123,52 +113,50 @@ href={`tel:+${CONTACT_PHONE}`}
               </div>
 
               <div>
-                <div className="rounded-[28px] border border-[#D7E2EA]/20 bg-white/5 backdrop-blur-md p-6 sm:p-8">
-                  <div className="text-[#D7E2EA] uppercase tracking-widest font-black" style={{ fontSize: "clamp(1.05rem, 1.7vw, 1.2rem)" }}>
+                <div className="rounded-[32px] border border-white/5 bg-white/[0.02] backdrop-blur-xl p-6 sm:p-10 h-full">
+                  <div className="text-white uppercase tracking-[0.2em] font-black" style={{ fontSize: "clamp(1.05rem, 1.7vw, 1.2rem)" }}>
                     Connect
                   </div>
 
-                  <div className="mt-5 space-y-3">
+                  <div className="mt-8 space-y-4">
                     <a
-href={CONTACT_GITHUB_URL}
+                      href={CONTACT_GITHUB_URL}
                       target="_blank"
                       rel="noreferrer"
-                      className="group block rounded-[18px] border border-[#D7E2EA]/20 bg-black/20 hover:bg-white/5 transition-colors px-5 py-4"
+                      className="group block rounded-[24px] border border-white/5 bg-black/40 hover:border-[#E31E24]/30 transition-all duration-300 px-6 py-5"
                     >
-                      <div className="text-white/90 font-semibold">GitHub</div>
-                      <div className="mt-1 text-[#D7E2EA] opacity-60 text-sm group-hover:opacity-80 transition-opacity">
-{CONTACT_GITHUB_URL.replace("https://", "")}
+                      <div className="text-white font-semibold group-hover:text-[#E31E24] transition-colors">GitHub</div>
+                      <div className="mt-1 text-white/40 text-sm">
+                        {CONTACT_GITHUB_URL.replace("https://", "")}
                       </div>
                     </a>
 
                     <a
-href={CONTACT_LINKEDIN_URL}
+                      href={CONTACT_LINKEDIN_URL}
                       target="_blank"
                       rel="noreferrer"
-                      className="group block rounded-[18px] border border-[#D7E2EA]/20 bg-black/20 hover:bg-white/5 transition-colors px-5 py-4"
+                      className="group block rounded-[24px] border border-white/5 bg-black/40 hover:border-[#E31E24]/30 transition-all duration-300 px-6 py-5"
                     >
-                      <div className="text-white/90 font-semibold">LinkedIn</div>
-                      <div className="mt-1 text-[#D7E2EA] opacity-60 text-sm group-hover:opacity-80 transition-opacity">
+                      <div className="text-white font-semibold group-hover:text-[#E31E24] transition-colors">LinkedIn</div>
+                      <div className="mt-1 text-white/40 text-sm">
                         {CONTACT_LINKEDIN_URL.replace("https://", "")}
-
                       </div>
                     </a>
                   </div>
 
-                  <div className="mt-6 text-[#D7E2EA] opacity-70 text-sm" style={{ lineHeight: 1.6 }}>
-                    Prefer email for project discussions. I’m available for freelance and full-time roles.
+                  <div className="mt-10 text-white/40 text-sm leading-relaxed uppercase tracking-widest text-center">
+                    Available for freelance & full-time roles.
                   </div>
 
-                  {/* SEO-friendly structured data */}
                   <script type="application/ld+json" dangerouslySetInnerHTML={{
                     __html: JSON.stringify({
                       "@context": "https://schema.org",
                       "@type": "Person",
                       name: "Santhosh Kumar",
-email: CONTACT_EMAIL,
+                      email: CONTACT_EMAIL,
                       telephone: CONTACT_PHONE,
                       url: CONTACT_GITHUB_URL,
-sameAs: [CONTACT_GITHUB_URL, CONTACT_LINKEDIN_URL],
+                      sameAs: [CONTACT_GITHUB_URL, CONTACT_LINKEDIN_URL],
                       jobTitle: "Frontend Developer",
                     }),
                   }} />
@@ -181,4 +169,3 @@ sameAs: [CONTACT_GITHUB_URL, CONTACT_LINKEDIN_URL],
     </section>
   );
 }
-

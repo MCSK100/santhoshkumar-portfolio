@@ -4,7 +4,6 @@ import FadeIn from "../components/FadeIn";
 import LiveProjectButton from "../components/LiveProjectButton";
 import { PROJECT_LIVE_LINKS } from "./ProjectsSectionLinks";
 
-
 const PROJECTS = [
   {
     number: "01",
@@ -29,8 +28,6 @@ const PROJECTS = [
   },
 ];
 
-
-
 const TOTAL_CARDS = PROJECTS.length;
 
 function ProjectCard({
@@ -54,82 +51,79 @@ function ProjectCard({
     <div
       ref={cardRef}
       className="h-[85vh] sticky top-24 md:top-32"
-      style={{ top: `${index * 28}px` }}
+      style={{ top: `${index * 32}px` }}
     >
       <motion.div
-        className="h-full rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-4 sm:p-6 md:p-8 flex flex-col"
+        className="h-full rounded-[40px] sm:rounded-[50px] border border-white/5 bg-[#0A0A0A] p-6 sm:p-8 md:p-10 flex flex-col group hover:border-[#E31E24]/30 transition-all duration-500"
         style={{ scale }}
       >
         {/* Top Row */}
-        <div className="flex items-start justify-between mb-4 sm:mb-6">
-          <div className="flex items-start gap-3 sm:gap-4 md:gap-6 flex-wrap">
+        <div className="flex flex-col md:flex-row items-start justify-between mb-8">
+          <div className="flex items-start gap-4 md:gap-8">
             {/* Number */}
             <span
-              className="text-[#D7E2EA] font-black leading-none"
-              style={{ fontSize: "clamp(3rem, 10vw, 140px)" }}
+              className="text-[#E31E24] font-black leading-none opacity-20 group-hover:opacity-100 transition-opacity duration-500"
+              style={{ fontSize: "clamp(3rem, 10vw, 120px)" }}
             >
               {project.number}
             </span>
-            <div className="flex flex-col justify-center pt-2 sm:pt-4">
+            <div className="flex flex-col justify-center pt-2 md:pt-4">
               <span
-                className="text-[#D7E2EA] uppercase tracking-wider font-medium opacity-60"
-                style={{ fontSize: "clamp(0.7rem, 1.2vw, 1rem)" }}
+                className="text-[#E31E24] uppercase tracking-[0.2em] font-black text-xs sm:text-sm mb-2"
               >
                 {project.category}
               </span>
               <h3
-                className="text-[#D7E2EA] font-medium uppercase"
-                style={{ fontSize: "clamp(1rem, 2.2vw, 2.1rem)" }}
+                className="text-white font-black uppercase group-hover:text-[#E31E24] transition-colors duration-300"
+                style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)" }}
               >
                 {project.name}
               </h3>
               <p
-                className="text-[#D7E2EA] opacity-70 leading-relaxed mt-2 max-w-[42rem]"
-                style={{ fontSize: "clamp(0.85rem, 1.6vw, 1.15rem)" }}
+                className="text-white/50 leading-relaxed mt-4 max-w-2xl"
+                style={{ fontSize: "clamp(0.9rem, 1.4vw, 1.1rem)" }}
               >
                 {project.description}
               </p>
-
             </div>
           </div>
-          <div className="flex-shrink-0 pt-2 sm:pt-4">
+          <div className="flex-shrink-0 mt-6 md:mt-4 w-full md:w-auto">
             <a
               href={PROJECT_LIVE_LINKS[project.name] ?? "#"}
               target="_blank"
               rel="noreferrer"
               className={
                 PROJECT_LIVE_LINKS[project.name]
-                  ? ""
-                  : "pointer-events-none"
+                  ? "w-full md:w-auto"
+                  : "pointer-events-none w-full md:w-auto"
               }
             >
               <LiveProjectButton />
             </a>
           </div>
-
         </div>
 
         {/* Bottom Row - Website iframe */}
-        <div className="flex gap-3 sm:gap-4 flex-1 min-h-0">
-          <div className="w-full rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden border border-[#D7E2EA]/30">
+        <div className="flex-1 min-h-0 relative group/iframe">
+          <div className="w-full h-full rounded-[32px] overflow-hidden border border-white/5 bg-black/40 group-hover/iframe:border-[#E31E24]/20 transition-all duration-500">
             {PROJECT_LIVE_LINKS[project.name] ? (
               <iframe
                 title={project.name}
                 src={PROJECT_LIVE_LINKS[project.name]}
-                className="w-full h-full"
-                style={{ minHeight: "420px" }}
+                className="w-full h-full grayscale-[0.8] group-hover/iframe:grayscale-0 transition-all duration-700"
+                style={{ minHeight: "300px" }}
                 loading="lazy"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center p-6">
-                <span className="text-[#D7E2EA] uppercase tracking-wider font-medium opacity-70">
+                <span className="text-white/20 uppercase tracking-widest font-black">
                   Live demo unavailable
                 </span>
               </div>
             )}
           </div>
+          <div className="absolute inset-0 pointer-events-none rounded-[32px] shadow-[inset_0_0_100px_rgba(0,0,0,0.5)]" />
         </div>
-
       </motion.div>
     </div>
   );
@@ -139,24 +133,29 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 z-10 px-5 sm:px-8 md:px-10 pt-20 sm:pt-24 md:pt-32 pb-20"
+      className="relative bg-[#050505] px-5 sm:px-8 md:px-10 pt-20 sm:pt-24 md:pt-32 pb-20"
     >
       {/* Heading */}
-      <FadeIn delay={0} y={40} className="text-center mb-16 sm:mb-20 md:mb-28">
+      <FadeIn delay={0} y={40} className="text-center mb-16 sm:mb-24">
         <h2
           className="hero-heading font-black uppercase leading-none tracking-tight"
           style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
         >
           Projects
         </h2>
-
       </FadeIn>
 
       {/* Project Cards */}
-      <div className="relative">
+      <div className="relative z-10">
         {PROJECTS.map((project, i) => (
           <ProjectCard key={project.number} project={project} index={i} />
         ))}
+      </div>
+
+      {/* Dark Premium Background Accents */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute top-[40%] right-[-5%] w-[60%] h-[60%] bg-[#E31E24] rounded-full blur-[200px] opacity-[0.02] animate-pulse-red" />
+        <div className="absolute bottom-[20%] left-[-5%] w-[60%] h-[60%] bg-[#111111] rounded-full blur-[200px] opacity-10" />
       </div>
     </section>
   );

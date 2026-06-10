@@ -42,7 +42,7 @@ export default function MarqueeSection() {
     if (!sectionRef.current) return;
     const sectionTop = sectionRef.current.offsetTop;
     const offset =
-      (window.scrollY - sectionTop + window.innerHeight) * 0.3;
+      (window.scrollY - sectionTop + window.innerHeight) * 0.2;
     setTranslateX(offset);
   }, []);
 
@@ -55,26 +55,30 @@ export default function MarqueeSection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-[#0C0C0C] pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden"
+      className="bg-[#050505] pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden relative"
     >
+      {/* Subtle top/bottom fade */}
+      <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-[#050505] to-transparent z-10" />
+      <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-[#050505] to-transparent z-10" />
+
       {/* Row 1 - moves RIGHT */}
-      <div className="flex gap-3 mb-3">
+      <div className="flex gap-4 mb-4 relative z-0">
         <div
-          className="flex gap-3 will-change-transform flex-shrink-0"
+          className="flex gap-4 will-change-transform flex-shrink-0"
           style={{
-            transform: `translateX(${translateX - 200}px)`,
+            transform: `translateX(${translateX - 400}px)`,
           }}
         >
           {row1Gifs.map((src, i) => (
             <div
               key={`r1-${i}`}
-              className="flex-shrink-0 rounded-2xl overflow-hidden"
-              style={{ width: 420, height: 270 }}
+              className="flex-shrink-0 rounded-[24px] overflow-hidden border border-white/5 group hover:border-[#E31E24]/30 transition-all duration-500 shadow-2xl"
+              style={{ width: 'clamp(280px, 40vw, 420px)', aspectRatio: '16/10' }}
             >
               <img
                 src={src}
                 alt=""
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
                 loading="lazy"
               />
             </div>
@@ -83,23 +87,23 @@ export default function MarqueeSection() {
       </div>
 
       {/* Row 2 - moves LEFT */}
-      <div className="flex gap-3">
+      <div className="flex gap-4 relative z-0">
         <div
-          className="flex gap-3 will-change-transform flex-shrink-0"
+          className="flex gap-4 will-change-transform flex-shrink-0"
           style={{
-            transform: `translateX(-${translateX - 200}px)`,
+            transform: `translateX(-${translateX - 400}px)`,
           }}
         >
           {row2Gifs.map((src, i) => (
             <div
               key={`r2-${i}`}
-              className="flex-shrink-0 rounded-2xl overflow-hidden"
-              style={{ width: 420, height: 270 }}
+              className="flex-shrink-0 rounded-[24px] overflow-hidden border border-white/5 group hover:border-[#E31E24]/30 transition-all duration-500 shadow-2xl"
+              style={{ width: 'clamp(280px, 40vw, 420px)', aspectRatio: '16/10' }}
             >
               <img
                 src={src}
                 alt=""
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
                 loading="lazy"
               />
             </div>

@@ -4,40 +4,40 @@
 
 @layer base {
   :root {
-    --background: 0 0% 5%;
-    --foreground: 210 20% 90%;
-    --card: 0 0% 5%;
-    --card-foreground: 210 20% 90%;
-    --popover: 0 0% 5%;
-    --popover-foreground: 210 20% 90%;
-    --primary: 210 20% 90%;
-    --primary-foreground: 0 0% 5%;
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 210 20% 90%;
-    --muted: 0 0% 12%;
-    --muted-foreground: 210 10% 60%;
-    --accent: 0 0% 12%;
-    --accent-foreground: 210 20% 90%;
+    --background: 0 0% 2%;
+    --foreground: 210 20% 98%;
+    --card: 0 0% 3%;
+    --card-foreground: 210 20% 98%;
+    --popover: 0 0% 3%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 0 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 210 10% 70%;
+    --accent: 0 0% 10%;
+    --accent-foreground: 210 20% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 210 20% 90%;
-    --radius: 0.625rem;
+    --border: 0 0% 12%;
+    --input: 0 0% 12%;
+    --ring: 0 100% 50%;
+    --radius: 1rem;
   }
 
-html, body, #root {
-    background-color: #0b0f0d;
+  html, body, #root {
+    background-color: #050505;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
   }
 
   body {
-    font-family: 'Kanit', sans-serif;
+    font-family: 'Syne', 'Kanit', sans-serif;
     color: #ffffff;
     overflow-x: hidden;
-
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -51,28 +51,75 @@ html, body, #root {
   :root {
     --premium-bg: #050505;
     --premium-text: #ffffff;
-    --premium-muted: rgba(255, 255, 255, 0.75);
+    --premium-muted: rgba(255, 255, 255, 0.65);
 
-    /* Retro red palette */
-    --premium-red-1: #ff2d55;
-    --premium-red-2: #ff4d00;
-    --premium-red-3: #ff1744;
-    --premium-glow: rgba(255, 45, 85, 0.45);
+    /* Premium Red Palette - Deep, Rich, High-Contrast */
+    --premium-red: #E31E24;
+    --premium-red-dark: #9B1317;
+    --premium-red-glow: rgba(227, 30, 36, 0.5);
+    
+    /* Dark Theme Accents */
+    --dark-accent: #111111;
+    --dark-accent-light: #1A1A1A;
+    --dark-glow: rgba(255, 255, 255, 0.03);
   }
 
   .hero-heading {
-    background: linear-gradient(90deg, var(--premium-red-3) 0%, #ff4d00 38%, #ff2d55 72%, var(--premium-red-2) 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #a1a1a1 50%, var(--premium-red) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 0 18px var(--premium-glow));
+    filter: drop-shadow(0 0 12px rgba(227, 30, 36, 0.2));
   }
 
-  .premium-glow {
-    box-shadow:
-      0 0 0 1px rgba(255, 45, 85, 0.25),
-      0 10px 40px rgba(255, 45, 85, 0.10),
-      0 0 60px rgba(255, 45, 85, 0.10);
+  .premium-red-text {
+    color: var(--premium-red);
+    text-shadow: 0 0 15px var(--premium-red-glow);
+  }
+
+  .premium-card {
+    background: rgba(15, 15, 15, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+  }
+
+  .premium-card:hover {
+    border-color: var(--premium-red);
+    box-shadow: 0 0 30px rgba(227, 30, 36, 0.15);
+  }
+
+  .dark-animated-bg {
+    background: radial-gradient(circle at 50% 50%, #111111 0%, #050505 100%);
+    position: relative;
+  }
+
+  .dark-animated-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.02;
+    pointer-events: none;
   }
 }
 
+/* Custom animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-red {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.animate-pulse-red {
+  animation: pulse-red 4s ease-in-out infinite;
+}

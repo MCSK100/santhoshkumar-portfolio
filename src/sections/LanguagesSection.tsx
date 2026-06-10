@@ -1,15 +1,25 @@
 import { motion } from "framer-motion";
 import FadeIn from "../components/FadeIn";
 
-const LANGUAGES = ["Tamil", "English", "Japanese"];
+const LANGUAGES = [
+  { name: "Tamil", level: "Native proficiency" },
+  { name: "English", level: "Professional working" },
+  { name: "Japanese", level: "Learning + practice" },
+];
 
 export default function LanguagesSection() {
   return (
     <section
       id="languages"
-      className="relative bg-[#0C0C0C] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 overflow-hidden"
+      className="relative bg-[#050505] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 overflow-hidden"
     >
-      <div className="text-center">
+      {/* Dark Premium Background Accents */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute top-[20%] right-[-10%] w-[50%] h-[50%] bg-[#E31E24] rounded-full blur-[150px] opacity-[0.03] animate-pulse-red" />
+        <div className="absolute bottom-[20%] left-[-10%] w-[50%] h-[50%] bg-[#111111] rounded-full blur-[150px] opacity-20" />
+      </div>
+
+      <div className="text-center relative z-10">
         <FadeIn delay={0} y={40}>
           <h2
             className="hero-heading font-black uppercase leading-none tracking-tight"
@@ -20,65 +30,35 @@ export default function LanguagesSection() {
         </FadeIn>
       </div>
 
-      <div className="mx-auto mt-12 sm:mt-16 max-w-4xl">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 place-items-center">
+      <div className="mx-auto mt-16 sm:mt-24 max-w-5xl relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10">
           {LANGUAGES.map((lang, idx) => (
             <motion.div
-              key={lang}
+              key={lang.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: idx * 0.05 }}
-              whileHover={{ rotateX: 8, rotateY: -8, y: -6 }}
-              className="w-full"
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              whileHover={{ y: -10 }}
+              className="w-full group"
             >
               <div
-                className="mx-auto rounded-[28px] border border-[#D7E2EA]/20 bg-white/5 backdrop-blur-md p-6 sm:p-8"
-                style={{
-                  boxShadow: "0 0 40px rgba(215,226,234,0.07) inset",
-                  transformStyle: "preserve-3d",
-                }}
+                className="rounded-[32px] border border-white/5 bg-white/[0.02] backdrop-blur-xl p-10 hover:border-[#E31E24]/30 transition-all duration-500 text-center h-full flex flex-col items-center justify-center"
               >
-                <motion.div
-                  animate={{
-                    y: [0, -10, 0],
-                  }}
-                  transition={{
-                    duration: 2.6,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: idx * 0.3,
-                  }}
-                  style={{
-                    willChange: "transform",
-                  }}
-                  aria-label={lang}
-                >
-                  <div className="text-center">
-                    <div className="text-[#D7E2EA] font-black uppercase tracking-widest" style={{ fontSize: "clamp(1.2rem, 2.2vw, 2.1rem)" }}>
-                      {lang}
-                    </div>
-                    <div className="mt-3 text-center text-[#D7E2EA] opacity-70 text-[0.95rem]">
-                      {idx === 0 ? "Native proficiency" : idx === 1 ? "Professional working" : "Learning + practice"}
-                    </div>
-                  </div>
-                </motion.div>
+                <div className="text-white font-black uppercase tracking-[0.2em] text-2xl sm:text-3xl group-hover:text-[#E31E24] transition-colors duration-300">
+                  {lang.name}
+                </div>
+                <div className="mt-4 text-white/40 group-hover:text-white/70 text-sm uppercase tracking-widest transition-colors duration-300">
+                  {lang.level}
+                </div>
+                <div className="mt-8">
+                  <div className="h-1.5 w-1.5 rounded-full bg-[#E31E24] group-hover:scale-[3] group-hover:shadow-[0_0_15px_#E31E24] transition-all duration-500" />
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
-
-      <div
-        className="pointer-events-none absolute -top-60 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle at 20% 20%, rgba(182,0,168,0.20), transparent 55%), radial-gradient(circle at 80% 80%, rgba(0,190,255,0.12), transparent 55%)",
-          filter: "blur(22px)",
-          opacity: 0.85,
-        }}
-      />
     </section>
   );
 }
-

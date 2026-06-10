@@ -33,58 +33,50 @@ const SERVICES = [
   },
 ];
 
-
 export default function ServicesSection() {
   return (
     <section
-      id="price"
-      className="bg-white rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32"
+      id="services"
+      className="relative bg-[#050505] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 overflow-hidden"
     >
-      {/* Heading */}
-      <h2
-        className="text-[#0C0C0C] font-black uppercase text-center mb-16 sm:mb-20 md:mb-28"
-        style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
-      >
-        Services
-      </h2>
+      {/* Dark Premium Background Accents */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute top-[20%] left-[-5%] w-[50%] h-[50%] bg-[#E31E24] rounded-full blur-[150px] opacity-[0.03] animate-pulse-red" />
+        <div className="absolute bottom-[20%] right-[-5%] w-[50%] h-[50%] bg-[#111111] rounded-full blur-[150px] opacity-20" />
+      </div>
 
-      {/* Service Items */}
-      <div className="max-w-5xl mx-auto">
-        {SERVICES.map((service, i) => (
-          <FadeIn key={service.number} delay={i * 0.1} y={30}>
-            <div
-              className={`flex items-start gap-4 sm:gap-6 md:gap-8 py-8 sm:py-10 md:py-12 ${
-                i < SERVICES.length - 1
-                  ? "border-b border-[rgba(12,12,12,0.15)]"
-                  : ""
-              }`}
-            >
-              {/* Number */}
-              <span
-                className="text-[#0C0C0C] font-black leading-none flex-shrink-0"
-                style={{ fontSize: "clamp(3rem, 10vw, 140px)" }}
-              >
-                {service.number}
-              </span>
+      <div className="text-center relative z-10">
+        <FadeIn delay={0} y={40}>
+          <h2
+            className="hero-heading font-black uppercase leading-none tracking-tight"
+            style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
+          >
+            Services
+          </h2>
+        </FadeIn>
+      </div>
 
-              {/* Name + Description */}
-              <div className="flex flex-col justify-center pt-2 sm:pt-4">
-                <h3
-                  className="text-[#0C0C0C] font-medium uppercase"
-                  style={{ fontSize: "clamp(1rem, 2.2vw, 2.1rem)" }}
-                >
+      <div className="mx-auto mt-16 sm:mt-24 max-w-6xl relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          {SERVICES.map((service, idx) => (
+            <FadeIn key={service.number} delay={idx * 0.1} y={20}>
+              <div className="group rounded-[32px] border border-white/5 bg-white/[0.02] backdrop-blur-xl p-8 sm:p-10 hover:border-[#E31E24]/30 transition-all duration-500 h-full flex flex-col">
+                <div className="text-[#E31E24] font-black text-4xl sm:text-5xl opacity-20 group-hover:opacity-100 transition-opacity duration-500 mb-6">
+                  {service.number}
+                </div>
+                <h3 className="text-white font-black uppercase tracking-widest text-xl sm:text-2xl mb-4 group-hover:text-[#E31E24] transition-colors duration-300">
                   {service.name}
                 </h3>
-                <p
-                  className="text-[#0C0C0C] font-light leading-relaxed max-w-2xl opacity-60 mt-1 sm:mt-2"
-                  style={{ fontSize: "clamp(0.85rem, 1.6vw, 1.25rem)" }}
-                >
+                <p className="text-white/50 leading-relaxed text-base sm:text-lg">
                   {service.description}
                 </p>
+                <div className="mt-auto pt-8">
+                  <div className="h-px w-full bg-white/5 group-hover:bg-[#E31E24]/30 transition-colors duration-500" />
+                </div>
               </div>
-            </div>
-          </FadeIn>
-        ))}
+            </FadeIn>
+          ))}
+        </div>
       </div>
     </section>
   );
