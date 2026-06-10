@@ -18,14 +18,14 @@ function Stat({
     <div className="text-center group">
       <div
         className="text-white font-black group-hover:text-[#E31E24] transition-colors duration-300"
-        style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)" }}
+        style={{ fontSize: "clamp(1.5rem, 4vw, 2.2rem)" }}
       >
         {value}
         {suffix}
       </div>
       <div
-        className="mt-2 text-white/40 uppercase tracking-widest group-hover:text-white/60 transition-colors duration-300"
-        style={{ fontSize: "clamp(0.75rem, 1.2vw, 0.95rem)" }}
+        className="mt-2 text-white/30 uppercase tracking-[0.2em] font-black group-hover:text-white/50 transition-colors duration-300"
+        style={{ fontSize: "clamp(0.6rem, 1vw, 0.75rem)" }}
       >
         {label}
       </div>
@@ -37,7 +37,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative min-h-screen flex flex-col items-center justify-center px-5 sm:px-8 md:px-10 py-20 bg-[#050505] overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-12 py-24 bg-[#050505] overflow-hidden"
     >
       {/* Premium Dark Background Accents */}
       <div className="pointer-events-none absolute inset-0">
@@ -45,32 +45,32 @@ export default function AboutSection() {
         <div className="absolute bottom-[10%] right-[-10%] w-[50%] h-[50%] bg-[#111111] rounded-full blur-[150px] opacity-20" />
       </div>
 
-      <div className="relative z-10 w-full flex flex-col items-center">
+      <div className="relative z-10 w-full flex flex-col items-center max-w-7xl mx-auto">
         {/* Heading */}
-        <FadeIn delay={0} y={40} className="text-center">
+        <FadeIn delay={0} y={40} className="text-center w-full">
           <h2
-            className="hero-heading font-black uppercase leading-none tracking-tight"
-            style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
+            className="hero-heading font-black uppercase leading-[0.9] tracking-tighter"
+            style={{ fontSize: "clamp(3.5rem, 10vw, 9rem)" }}
           >
             ABOUT ME
           </h2>
         </FadeIn>
 
         {/* Gap */}
-        <div className="h-10 sm:h-14 md:h-16" />
+        <div className="h-12 sm:h-16 md:h-20" />
 
         {/* Animated Paragraph */}
-        <div className="max-w-[700px] w-full text-center px-4">
+        <div className="max-w-[800px] w-full text-center px-4">
           <AnimatedText
             text={ABOUT_TEXT}
-            className="text-white/70 font-medium leading-relaxed"
-            style={{ fontSize: "clamp(1rem, 2vw, 1.35rem)" }}
+            className="text-white/60 font-medium leading-relaxed"
+            style={{ fontSize: "clamp(0.95rem, 1.8vw, 1.2rem)" }}
           />
         </div>
 
         {/* Animated Stats */}
-        <div className="mt-16 sm:mt-20 md:mt-24 w-full max-w-5xl">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-12">
+        <div className="mt-20 sm:mt-24 md:mt-32 w-full">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-16">
             <Stat label="Years Experience" value={4} />
             <Stat label="Projects Delivered" value={50} />
             <Stat label="Technologies" value={15} />
@@ -79,7 +79,7 @@ export default function AboutSection() {
         </div>
 
         {/* Gap */}
-        <div className="h-16 sm:h-20 md:h-24" />
+        <div className="h-20 sm:h-24 md:h-32" />
 
         {/* Contact Button */}
         <FadeIn delay={0.4} y={20}>
