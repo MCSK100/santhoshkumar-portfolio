@@ -5,8 +5,8 @@ import {
   CONTACT_PHONE,
   CONTACT_GITHUB_URL,
   CONTACT_LINKEDIN_URL,
-  CONTACT_RESUME_URL,
 } from "../types/contact";
+import RESUME_PDF from "../SanthoshKumar Resume FrontEnd Developer-1.pdf.pdf";
 
 
 function buildMailto(email: string) {
@@ -100,10 +100,9 @@ href={`tel:+${CONTACT_PHONE}`}
                     </a>
 
                     <a
-href={CONTACT_RESUME_URL}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="group rounded-[20px] border border-[#D7E2EA]/20 bg-black/20 hover:bg-white/5 transition-colors px-5 py-4 sm:col-span-2"
+                      href={RESUME_PDF}
+                      download="SanthoshKumar-Resume.pdf"
+                      className="group rounded-[20px] border border-[#D7E2EA]/20 bg-black/20 hover:bg-white/5 transition-colors px-5 py-4 sm:col-span-2 cursor-pointer"
                     >
                       <div className="text-[#D7E2EA] font-black uppercase tracking-wider text-sm">Resume</div>
                       <div className="mt-2 text-white/90 font-medium">Download / View PDF</div>
