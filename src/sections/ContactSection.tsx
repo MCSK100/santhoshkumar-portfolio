@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import FadeIn from "../components/FadeIn";
 import {
   CONTACT_EMAIL,
@@ -150,7 +150,8 @@ href={CONTACT_LINKEDIN_URL}
                     >
                       <div className="text-white/90 font-semibold">LinkedIn</div>
                       <div className="mt-1 text-[#D7E2EA] opacity-60 text-sm group-hover:opacity-80 transition-opacity">
-                        {LINKEDIN_URL.replace("https://", "")}
+                        {CONTACT_LINKEDIN_URL.replace("https://", "")}
+
                       </div>
                     </a>
                   </div>
