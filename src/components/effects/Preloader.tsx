@@ -148,15 +148,21 @@ export const Preloader = () => {
     if (hasExitedRef.current) return
     hasExitedRef.current = true
 
+    // Guard: ensure elements exist before animating
+    const curtainTop = document.querySelector('.curtain-top')
+    const curtainBottom = document.querySelector('.curtain-bottom')
+    const preloaderInner = document.querySelector('.preloader-inner')
+    if (!curtainTop || !curtainBottom || !preloaderInner) return
+
     const tl = gsap.timeline({ defaults: { overwrite: 'auto' } })
 
-    gsap.set('.curtain-top', { y: '-100%', autoAlpha: 1 })
-    gsap.set('.curtain-bottom', { y: '100%', autoAlpha: 1 })
-    gsap.set('.preloader-inner', { opacity: 0, autoAlpha: 0 })
+    gsap.set(curtainTop, { y: '-100%', autoAlpha: 1 })
+    gsap.set(curtainBottom, { y: '100%', autoAlpha: 1 })
+    gsap.set(preloaderInner, { opacity: 0, autoAlpha: 0 })
 
-    tl.to('.preloader-inner', { opacity: 0, duration: 0.12, ease: 'power2.in' })
+    tl.to(preloaderInner, { opacity: 0, duration: 0.12, ease: 'power2.in' })
     tl.to(
-      '.curtain-top',
+      curtainTop,
       {
         y: '-100%',
         duration: 0.35,
@@ -165,7 +171,7 @@ export const Preloader = () => {
       0
     )
     tl.to(
-      '.curtain-bottom',
+      curtainBottom,
       {
         y: '100%',
         duration: 0.35,

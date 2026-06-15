@@ -156,7 +156,7 @@ export const Hero = () => {
               {/* Image */}
               <div className="relative aspect-[16/9] overflow-hidden bg-bg-secondary">
                 <img
-                  src="/src/port-hero-section.png"
+                  src="/port-hero-section.png"
                   alt="Santhosh Kumar"
                   className="w-full h-full object-cover"
                   loading="eager"
