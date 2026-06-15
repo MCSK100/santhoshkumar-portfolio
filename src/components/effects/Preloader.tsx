@@ -186,7 +186,7 @@ export const Preloader = () => {
       // Show Game Loaded toast
       const toast = document.createElement('div')
       toast.className = 'fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[300] px-8 py-4 bg-bg-primary/95 border border-accent-red/30 rounded-lg backdrop-blur-md'
-      toast.innerHTML = '<div class="font-mono text-center"><div class="text-accent-red text-xs tracking-[0.4em] mb-2">SYSTEM READY</div><div class="text-white text-2xl font-bold tracking-wider">GAME LOADED</div></div>'
+      toast.innerHTML = '<div class="font-mono text-center"><div class="text-accent-red text-xs tracking-[0.4em] mb-2">SYSTEM READY</div><div class="text-white text-2xl font-bold tracking-wider">Portfolio loaded</div></div>'
       document.body.appendChild(toast)
       gsap.fromTo(toast, { scale: 0.8, opacity: 0, autoAlpha: 0 }, { scale: 1, opacity: 1, autoAlpha: 1, duration: 0.4, ease: 'back.out' })
       gsap.to(toast, { scale: 0.8, opacity: 0, autoAlpha: 0, duration: 0.3, delay: 2, ease: 'power2.in', onComplete: () => toast.remove() })
