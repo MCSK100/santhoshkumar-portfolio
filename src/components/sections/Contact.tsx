@@ -1,15 +1,12 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Mail, MapPin, Github, Linkedin, Send, Globe } from 'lucide-react'
+import { Mail, MapPin, Github, Linkedin, Globe } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export const Contact = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
 
   useEffect(() => {
     const section = sectionRef.current
@@ -31,40 +28,10 @@ export const Contact = () => {
           scrollTrigger: { trigger: '.contact-terminal', start: 'top 85%', toggleActions: 'play none none reverse' }
         }
       )
-
-      gsap.fromTo('.contact-form',
-        { y: 60, opacity: 0 },
-        {
-          y: 0, opacity: 1, duration: 1, ease: 'power3.out',
-          scrollTrigger: { trigger: '.contact-form', start: 'top 85%', toggleActions: 'play none none reverse' }
-        }
-      )
     }, section)
 
     return () => ctx.revert()
   }, [])
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-
-    // Open WhatsApp with a prefilled message to +91 8610499863
-    const phone = '8610499863'
-    const text = encodeURIComponent(
-      `Hello ${formData.name},\n\n${formData.message}\n\nFrom: ${formData.email}`
-    )
-
-    const url = `https://wa.me/${phone}?text=${text}`
-    window.open(url, '_blank', 'noopener,noreferrer')
-
-    // Keep existing UI feedback
-    setIsSubmitting(true)
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSubmitted(true)
-      setFormData({ name: '', email: '', message: '' })
-      setTimeout(() => setIsSubmitted(false), 3000)
-    }, 500)
-  }
 
   return (
     <section ref={sectionRef} id="contact" className="relative py-32 overflow-hidden">
@@ -103,9 +70,9 @@ export const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-1 gap-16">
           {/* Terminal-style contact info */}
-          <div className="contact-terminal space-y-6">
+          <div className="contact-terminal space-y-6 max-w-2xl mx-auto">
             {/* Terminal window */}
             <div className="project-strip">
               <div className="corner tl" />
@@ -174,76 +141,6 @@ export const Contact = () => {
               <span className="live-dot" />
               <span className="font-mono text-[10px] text-text-muted tracking-wider">SYSTEM ONLINE — AWAITING TRANSMISSION</span>
             </div>
-          </div>
-
-          {/* Contact form */}
-          <div className="contact-form">
-            <form onSubmit={handleSubmit} className="project-strip">
-              <div className="corner tl" />
-              <div className="corner tr" />
-              <div className="corner bl" />
-              <div className="corner br" />
-
-              <div className="p-8">
-                <div className="font-mono text-[9px] text-text-muted tracking-[0.2em] uppercase mb-6">Compose Message</div>
-
-                <div className="space-y-5">
-                  <div>
-                    <label className="block font-mono text-[10px] mb-2 tracking-[0.15em] uppercase text-text-muted">Sender ID</label>
-                    <input
-                      type="text"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      required
-                      className="w-full bg-white/[0.03] border border-white/[0.06] rounded-lg px-4 py-3 text-white text-sm font-mono placeholder:text-text-muted/30 focus:outline-none input-glow transition-all duration-300"
-                      placeholder="Enter your name"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block font-mono text-[10px] mb-2 tracking-[0.15em] uppercase text-text-muted">Return Channel</label>
-                    <input
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      required
-                      className="w-full bg-white/[0.03] border border-white/[0.06] rounded-lg px-4 py-3 text-white text-sm font-mono placeholder:text-text-muted/30 focus:outline-none input-glow transition-all duration-300"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block font-mono text-[10px] mb-2 tracking-[0.15em] uppercase text-text-muted">Message Payload</label>
-                    <textarea
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      required
-                      rows={5}
-                      className="w-full bg-white/[0.03] border border-white/[0.06] rounded-lg px-4 py-3 text-white text-sm font-mono placeholder:text-text-muted/30 focus:outline-none input-glow transition-all duration-300 resize-none"
-                      placeholder="Describe your project..."
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full py-4 bg-accent-red/20 border border-accent-red/30 rounded-lg text-white font-mono tracking-[0.15em] uppercase text-[11px] hover:bg-accent-red/30 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 glow-red"
-                    data-cursor-hover
-                  >
-                    {isSubmitting ? (
-                      <span className="animate-pulse">TRANSMITTING...</span>
-                    ) : isSubmitted ? (
-                      <span className="text-green-400">TRANSMISSION COMPLETE</span>
-                    ) : (
-                      <>
-                        <span>Initiate Contact</span>
-                        <Send size={14} />
-                      </>
-                    )}
-                  </button>
-                </div>
-              </div>
-            </form>
           </div>
         </div>
       </div>
