@@ -224,8 +224,8 @@ export const Hero = () => {
             </a>
 
             <a
-              href="#"
-              onClick={(e) => e.preventDefault()}
+              href="/Santhosh_Kumar_Resume_Senior_Frontend_Developer.pdf"
+              download
               className="hero-cta inline-flex items-center gap-2 px-6 py-3 border border-white/10 text-text-secondary font-mono text-[11px] tracking-[0.2em] uppercase rounded hover:border-white/20 hover:text-white transition-all duration-300 opacity-0"
               data-cursor-hover
               aria-label="Download Resume"
