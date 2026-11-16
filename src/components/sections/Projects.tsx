@@ -18,9 +18,49 @@ type Project = {
 const projects: Project[] = [
   {
     id: 1,
+    title: 'Quizlly Brain',
+    description:
+      'AI-enhanced learning and quiz platform designed for engaging knowledge testing, personalized practice, and a polished modern user experience.',
+    tech: ['React', 'Vite', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'REST APIs', 'Framer Motion'],
+    github: 'https://github.com/MCSK100',
+    live: 'https://quizlly-brain.vercel.app/',
+    category: 'Learning',
+  },
+  {
+    id: 2,
+    title: 'FestivLink',
+    description:
+      'Event discovery platform that connects people with local experiences, trending festivals, and community-driven activities through an immersive interface.',
+    tech: ['React.js', 'Express', 'Node.js', 'MongoDB', 'Cloudinary', 'Axios', 'Tailwind CSS'],
+    github: 'https://github.com/MCSK100',
+    live: 'https://festivlink.vercel.app/',
+    category: 'Events',
+  },
+  {
+    id: 3,
+    title: 'OneSpace Live',
+    description:
+      'Virtual collaboration and community hub built for real-time interaction, digital experiences, and streamlined engagement flows.',
+    tech: ['React', 'Next.js', 'Tailwind CSS', 'Realtime UI', 'Node.js', 'Socket.IO', 'Vercel'],
+    github: 'https://github.com/MCSK100',
+    live: 'https://onespace-live.vercel.app/',
+    category: 'Collaboration',
+  },
+  {
+    id: 4,
+    title: 'Hottkeys',
+    description:
+      'Keyboard productivity platform focused on shortcut discovery, workflow acceleration, and user-friendly learning experiences.',
+    tech: ['React', 'Vite', 'JavaScript', 'CSS', 'UI Systems', 'Tailwind CSS', 'Productivity UX'],
+    github: 'https://github.com/MCSK100',
+    live: 'https://hottkeys.vercel.app/',
+    category: 'Productivity',
+  },
+  {
+    id: 5,
     title: 'YourScrap',
     description:
-      'Digital Scrap Marketplace — connecting users with scrap collectors and recycling services with a smooth, trustworthy UX.',
+      'Digital scrap marketplace connecting users with collection services and recycling opportunities through a trustworthy and streamlined experience.',
     tech: [
       'React 18',
       'Vite',
@@ -31,42 +71,21 @@ const projects: Project[] = [
       'Supabase (PostgreSQL)',
       'Framer Motion',
       'GSAP',
-      'Recharts (admin dashboard)',
+      'Recharts',
     ],
     github: 'https://github.com/MCSK100',
     live: 'https://yourscrap.vercel.app/',
     category: 'Marketplace',
   },
   {
-    id: 2,
-    title: 'ShadowChat',
+    id: 6,
+    title: 'Find Thief Game',
     description:
-      'Modern Real-Time Communication Platform — responsive UI and advanced user interactions with realtime messaging experience.',
-    tech: [
-      'JavaScript',
-      'React (JSX)',
-      'React Router',
-      'Vite',
-      'TailwindCSS',
-      'Framer Motion',
-      'Socket.IO (Realtime)',
-      'WebRTC (RTCPeerConnection, offer/answer/ICE)',
-      'Express',
-      'PWA (service worker + manifest)',
-    ],
+      'Interactive mystery game experience with problem-solving gameplay, layered UI states, and immersive browser-based storytelling.',
+    tech: ['React', 'JavaScript', 'Canvas', 'Tailwind CSS', 'Game UI', 'Animation', 'Responsive Design'],
     github: 'https://github.com/MCSK100',
-    live: 'https://shadowchaty.vercel.app/',
-    category: 'Real-Time',
-  },
-  {
-    id: 3,
-    title: 'FestivLink',
-    description:
-      'Event Discovery Platform — connecting users with local events and community activities using modern web UI patterns.',
-    tech: ['React.js', 'Express', 'Node.js', 'MongoDB','Cloudinary','Axios', 'Tailwind CSS'],
-    github: 'https://github.com/MCSK100',
-    live: 'https://festivlink.vercel.app/',
-    category: 'Events',
+    live: 'https://find-thief-game-three.vercel.app/',
+    category: 'Game',
   },
 ]
 
